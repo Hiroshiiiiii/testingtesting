@@ -57,7 +57,9 @@ class BORROWBOOKS:
         # Search books by filters like title, author, genre, or year
         results = []
         for book_id, book in self.book_data.items():
-            match = all(book.get(key) == value for key, value in filters.items())
+            match = all(
+                book.get(key) == value for key, value in filters.items()
+            )
             if match and book.get('available', False):
                 results.append({**book, 'book_id': book_id})
         return results
