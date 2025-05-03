@@ -1,12 +1,7 @@
 # User data with PINs and borrowed books
 users = {
     "raejohn": {"pin": "1234", "borrowed_books": []},
-    "regie": {"pin": "4321", "borrowed_books": []},
-    "jericho": {"pin": "5678", "borrowed_books": []},
-    "johncarlo": {"pin": "8765", "borrowed_books": []},
-    "robert": {"pin": "91011", "borrowed_books": []},
-    
-    
+    "regie": {"pin": "4321", "borrowed_books": []}, 
 }
 
 # Book data with additional popular books
