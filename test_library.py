@@ -42,14 +42,18 @@ class TestLibrarySystem(unittest.TestCase):
         self.assertEqual(result, "Book returned successfully.")
 
     def test_return_unborrowed_book(self):
-        result = self.library.return_book("B009")  # Try returning 'ABNKKBSNPLAko?!'
+        result = self.library.return_book(
+            "B009"
+        )  # Try returning 'ABNKKBSNPLAko?!'
         self.assertEqual(result, "You did not borrow this book.")
 
     def test_borrow_limit(self):
         self.library.borrow_book("B005")  # 'Noli Me Tangere'
         self.library.borrow_book("B006")  # 'El Filibusterismo'
         self.library.borrow_book("B007")  # 'Dekada '70'
-        result = self.library.borrow_book("B008")  # 'Smaller and Smaller Circles'
+        result = self.library.borrow_book(
+            "B008"
+        )  # 'Smaller and Smaller Circles'
         self.assertEqual(result, "Borrowing limit reached.")
 
     def test_borrow_nonexistent_book(self):
@@ -86,7 +90,9 @@ class TestLibrarySystem(unittest.TestCase):
         self.library.borrow_book("B006")  # Borrow 'El Filibusterismo'
         self.library.borrow_book("B007")  # Borrow 'Dekada '70'
         self.library.return_book("B006")  # Return 'El Filibusterismo'
-        result = self.library.borrow_book("B008")  # Borrow 'Smaller and Smaller Circles'
+        result = self.library.borrow_book(
+            "B008"
+        )  # Borrow 'Smaller and Smaller Circles'
         self.assertEqual(result, "Book borrowed successfully.")
 
     def test_view_borrowed_books(self):
