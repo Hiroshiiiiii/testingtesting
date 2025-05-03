@@ -7,7 +7,8 @@ class BORROWBOOKS:
 
     def login(self, account_number, pin):
         # Check if account number exists and the pin matches
-        if account_number in self.user_data and self.user_data[account_number].get('pin') == pin:
+        if account_number in self.user_data and \
+                self.user_data[account_number].get('pin') == pin:
             self.current_user = account_number
             return True
         return False
@@ -18,12 +19,15 @@ class BORROWBOOKS:
             if book.get('available', False):
                 # Mark the book as borrowed
                 book['available'] = False
-                self.user_data[self.current_user]['borrowed_books'].append(book_id)
+                self.user_data[self.current_user]['borrowed_books'].append(
+                    book_id
+                )
                 return True
         return False
 
     def return_book(self, book_id):
-        if self.current_user and book_id in self.user_data[self.current_user]['borrowed_books']:
+        if self.current_user and book_id in \
+                self.user_data[self.current_user]['borrowed_books']:
             book = self.book_data[book_id]
             # Mark the book as returned
             book['available'] = True
