@@ -19,15 +19,12 @@ class BORROWBOOKS:
             if book.get('available', False):
                 # Mark the book as borrowed
                 book['available'] = False
-                self.user_data[self.current_user]['borrowed_books'].append(
-                    book_id
-                )
+                self.user_data[self.current_user]['borrowed_books'].append(book_id)
                 return True
         return False
 
     def return_book(self, book_id):
-        if self.current_user and book_id in \
-                self.user_data[self.current_user]['borrowed_books']:
+        if self.current_user and book_id in self.user_data[self.current_user]['borrowed_books']:
             book = self.book_data[book_id]
             # Mark the book as returned
             book['available'] = True
@@ -57,9 +54,7 @@ class BORROWBOOKS:
         # Search books by filters like title, author, genre, or year
         results = []
         for book_id, book in self.book_data.items():
-            match = all(
-                book.get(key) == value for key, value in filters.items()
-            )
+            match = all(book.get(key) == value for key, value in filters.items())
             if match and book.get('available', False):
                 results.append({**book, 'book_id': book_id})
         return results
