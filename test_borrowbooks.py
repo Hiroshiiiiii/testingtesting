@@ -28,8 +28,7 @@ class TestBORROWBOOKS(unittest.TestCase):
         self.library.login("raejohn", "1234")
         result = self.library.borrow_book("book1")
         self.assertTrue(result)
-        self.assertIn("book1", 
-                      self.library.user_data["raejohn"]["borrowed_books"])
+        self.assertIn("book1", self.library.user_data["raejohn"]["borrowed_books"])
         self.assertFalse(self.library.book_data["book1"]["available"])
 
     def test_borrow_book_fail_unavailable(self):
@@ -41,8 +40,7 @@ class TestBORROWBOOKS(unittest.TestCase):
         self.library.login("regie", "4321")
         result = self.library.borrow_book("book1")
         self.assertFalse(result)
-        self.assertNotIn("book1", 
-                         self.library.user_data["regie"]["borrowed_books"])
+        self.assertNotIn("book1", self.library.user_data["regie"]["borrowed_books"])
 
     def test_borrow_book_fail_not_logged_in(self):
         # Test failure to borrow a book when not logged in
@@ -55,8 +53,7 @@ class TestBORROWBOOKS(unittest.TestCase):
         self.library.borrow_book("book1")
         result = self.library.return_book("book1")
         self.assertTrue(result)
-        self.assertNotIn("book1", 
-                         self.library.user_data["raejohn"]["borrowed_books"])
+        self.assertNotIn("book1", self.library.user_data["raejohn"]["borrowed_books"])
         self.assertTrue(self.library.book_data["book1"]["available"])
 
     def test_return_book_fail_unborrowed(self):
@@ -104,10 +101,8 @@ class TestBORROWBOOKS(unittest.TestCase):
         # Test searching books by author
         results = self.library.search_books(author="J.R.R. Tolkien")
         self.assertEqual(len(results), 2)
-        self.assertIn("The Lord of the Rings", 
-                      [book["title"] for book in results])
-        self.assertIn("The Hobbit", 
-                      [book["title"] for book in results])
+        self.assertIn("The Lord of the Rings", [book["title"] for book in results])
+        self.assertIn("The Hobbit", [book["title"] for book in results])
 
     def test_search_books_no_results(self):
         # Test searching books with no matching results
