@@ -72,8 +72,14 @@ class TestLibrarySystem(unittest.TestCase):
         self.library.borrow_book("B005")  # Borrow 'Noli Me Tangere'
         self.library.borrow_book("B006")  # Borrow 'El Filibusterismo'
         self.library.login("654321", "4321")
-        self.assertEqual(self.library.borrow_book("B007"), "Book borrowed successfully.")  # Borrow 'Dekada '70'
-        self.assertEqual(self.library.return_book("B007"), "Book returned successfully.")
+        self.assertEqual(
+            self.library.borrow_book("B007"),
+            "Book borrowed successfully."
+        )  # Borrow 'Dekada '70'
+        self.assertEqual(
+            self.library.return_book("B007"),
+            "Book returned successfully."
+        )
 
     def test_return_one_and_borrow_another(self):
         self.library.borrow_book("B005")  # Borrow 'Noli Me Tangere'
@@ -93,19 +99,40 @@ class TestLibrarySystem(unittest.TestCase):
 
     def test_borrow_all_books(self):
         """Test borrowing all available books."""
-        self.assertEqual(self.library.borrow_book("B005"), "Book borrowed successfully.")  # 'Noli Me Tangere'
-        self.assertEqual(self.library.borrow_book("B006"), "Book borrowed successfully.")  # 'El Filibusterismo'
-        self.assertEqual(self.library.borrow_book("B007"), "Book borrowed successfully.")  # 'Dekada '70'
-        self.assertEqual(self.library.borrow_book("B008"), "Borrowing limit reached.")  # 'Smaller and Smaller Circles'
+        self.assertEqual(
+            self.library.borrow_book("B005"),
+            "Book borrowed successfully."
+        )  # 'Noli Me Tangere'
+        self.assertEqual(
+            self.library.borrow_book("B006"),
+            "Book borrowed successfully."
+        )  # 'El Filibusterismo'
+        self.assertEqual(
+            self.library.borrow_book("B007"),
+            "Book borrowed successfully."
+        )  # 'Dekada '70'
+        self.assertEqual(
+            self.library.borrow_book("B008"),
+            "Borrowing limit reached."
+        )  # 'Smaller and Smaller Circles'
 
     def test_return_all_books(self):
         """Test returning all borrowed books."""
         self.library.borrow_book("B005")  # 'Noli Me Tangere'
         self.library.borrow_book("B006")  # 'El Filibusterismo'
         self.library.borrow_book("B007")  # 'Dekada '70'
-        self.assertEqual(self.library.return_book("B005"), "Book returned successfully.")
-        self.assertEqual(self.library.return_book("B006"), "Book returned successfully.")
-        self.assertEqual(self.library.return_book("B007"), "Book returned successfully.")
+        self.assertEqual(
+            self.library.return_book("B005"),
+            "Book returned successfully."
+        )
+        self.assertEqual(
+            self.library.return_book("B006"),
+            "Book returned successfully."
+        )
+        self.assertEqual(
+            self.library.return_book("B007"),
+            "Book returned successfully."
+        )
         borrowed_books = self.library.view_borrowed_books()
         self.assertEqual(len(borrowed_books), 0)
 
